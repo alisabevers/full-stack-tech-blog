@@ -1,1 +1,1 @@
-# full-stack-tech-blog
+# Tech Blog (full-stack)
