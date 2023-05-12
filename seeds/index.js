@@ -10,8 +10,8 @@ const seedAll = async () => {
         individualHooks: true,
         returning: true,
     });
-    // seedUsers();
-    // seedPost();
+    seedUsers();
+    seedPost();
     process.exit(0);
 };
 

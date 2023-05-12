@@ -1,8 +1,7 @@
 const router = require('express').Router();
+const users = require('./users');
 
-// Localhost:3001/
-router.get('/', (req, res) => {
-    res.json('hello');
-})
+// localhost:3001/users
+router.use('/users', users);
 
 module.exports = router;
