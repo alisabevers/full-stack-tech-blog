@@ -19,13 +19,8 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        author_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         post_id: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
             allowNull: false,
             references: {
                 model: 'user',
