@@ -1,3 +1,23 @@
 body {
-    background-color: #BDD7D5;
+    background-color: #DDEDEE;
+}
+
+/* navbar + main header where it says The Tech Blog */
+.mainHeader {
+    background-color: #3C7D81;
+    padding: 4vb 0 4vb;
+}
+
+/* navbar links */
+a {
+    color: #DDEDEE;
+    padding-right: 6vb;
+    font-size: x-large;
+}
+
+#techBlogLogo h1 {
+    color: #3C7D81;
+    background-color: #DDEDEE;
+    padding: 1vb 3vb 1vb;
+    border-radius: 3vb;
 }
