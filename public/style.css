@@ -25,3 +25,18 @@ a {
 .card {
     margin: 3vb 20vb 3vb;
 }
+
+#loginCard {
+    margin: 3vb;
+}
+
+.card-header {
+    background-color: #3C7D81;
+    color: #DDEDEE;
+    font-size: x-large;
+}
+
+.btn {
+    background-color: #3C7D81;
+    color: #DDEDEE;
+}
