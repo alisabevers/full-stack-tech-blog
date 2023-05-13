@@ -5,7 +5,7 @@ body {
 /* navbar + main header where it says The Tech Blog */
 .mainHeader {
     background-color: #3C7D81;
-    padding: 4vb 0 4vb;
+    padding: 3vb 0 3vb;
 }
 
 /* navbar links */
@@ -20,4 +20,8 @@ a {
     background-color: #DDEDEE;
     padding: 1vb 3vb 1vb;
     border-radius: 3vb;
+}
+
+.card {
+    margin: 3vb 20vb 3vb;
 }
