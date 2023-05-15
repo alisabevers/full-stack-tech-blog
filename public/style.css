@@ -26,7 +26,7 @@ a {
     margin: 3vb 20vb 3vb;
 }
 
-#loginCard {
+.loginSignUpForm {
     margin: 3vb;
 }
 
@@ -39,4 +39,10 @@ a {
 .btn {
     background-color: #3C7D81;
     color: #DDEDEE;
+    font-size: large;
+}
+
+.login-signup {
+    color: #3C7D81;
+    font-size: large;
 }
