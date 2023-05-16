@@ -1,6 +1,7 @@
 console.log('im working');
 
-const signUpForm = document.querySelector('.loginSignUpForm');
+// function that posts the NEW username and password to the User table in our DB
+const signUpForm = document.getElementById('signUpForm');
 
 const submitForm = async (event) => {
     event.preventDefault();
