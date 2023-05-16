@@ -1,26 +1,22 @@
-console.log('im working');
-
 // function that posts the NEW username and password to the User table in our DB
 const signUpForm = document.getElementById('signUpForm');
 
 const submitForm = async (event) => {
     event.preventDefault();
 
-    const usernameValue = document.getElementById('usernameInput').value;
-    console.log(usernameValue);
-    const passwordValue = document.getElementById('passwordInput').value;
-    console.log(passwordValue);
+    const username = document.getElementById('usernameInput').value.trim();
+    const password = document.getElementById('passwordInput').value.trim();
 
-    const postValue = await fetch('/users/sign-up', {
+    const postValue = await fetch('/api/users/sign-up', {
         method: "POST",
         body: JSON.stringify({
-            username: usernameValue,
-            password: passwordValue
-        })
+            username, password
+        }),
+        headers: { 'Content-Type': 'application/json' },
     })
 
     if(postValue.ok) {
-        alert('You successfully signed up!')
+        window.location.href = "/"
     } else {
         alert('Sign-up unsuccessful. Please try again.')
     }

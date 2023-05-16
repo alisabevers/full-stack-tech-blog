@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post } = require('../../models');
 
-// Localhost:3001/users
+// localhost:3001/api/users
 router.get('/', async (req, res) => {
     const userData = await User.findAll({
         attributes: ['username']
@@ -10,18 +10,25 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new user
-// localhost:3001/users/sign-up
+// localhost:3001/api/users/sign-up
 router.post('/sign-up', async (req, res) => {
-    const { username, password } = req.body;
-    const userData = await User.create({
-        username: username,
-        password: password,
-    });
-    res.json(userData);
+    console.log(req.body);
+    try {
+        const userData = await User.create(req.body);
+    
+        req.session.save(() => {
+          req.session.user_id = userData.id;
+          req.session.logged_in = true;
+    
+          res.status(200).json(userData);
+        });
+      } catch (err) {
+        res.status(400).json(err);
+      }
 });
 
-// Login - THIS CODE IS CURRENTLY BROKEN. ROUTE DOES NOT WORK. WILL COME BACK TO THIS.
-// localhost:3001/users/login
+
+// localhost:3001/api/users/login
 router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
@@ -43,7 +50,15 @@ router.post('/login', async (req, res) => {
     }
 });
 
-
-// Logout
+// Handles logging out
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;
