@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { User } = require('../../models');
 
 // localhost:3001/api/users
 router.get('/', async (req, res) => {
@@ -30,6 +30,7 @@ router.post('/sign-up', async (req, res) => {
 
 // localhost:3001/api/users/login
 router.post('/login', async (req, res) => {
+    console.log('testing message');
     try {
         const dbUserData = await User.findOne({
             where: {
@@ -37,12 +38,32 @@ router.post('/login', async (req, res) => {
             },
         });
 
+        console.log(dbUserData);
+        
         if (!dbUserData) {
             res.status(400).json({
-                message: 'Invalid username, please try again.'
+                message: 'Invalid username, please try again!'
             });
             return;
         }
+
+        const validPassword = await dbUserData.checkPassword(req.body.password);
+
+        if(!validPassword) {
+            res.status(400).json({
+                message: 'Invalid password, please try again!'
+            });
+            return;
+        }
+
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.logged_in = true;
+
+            res.status(200).json({
+                user: dbUserData, message: 'You are now logged in!'
+            });
+        })
 
     } catch (err) {
         console.log(err);
