@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     res.json(userData);
 });
 
-// Create a new user
+
+// Creates a new user
 // localhost:3001/api/users/sign-up
 router.post('/sign-up', async (req, res) => {
     console.log(req.body);
